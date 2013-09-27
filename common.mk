@@ -15,7 +15,7 @@
 #
 COMMON_PATH := device/samsung/u8500-common
 
-DEVICE_PACKAGE_OVERLAYS := $(COMMON_PATH)/overlay
+#DEVICE_PACKAGE_OVERLAYS := $(COMMON_PATH)/overlay
 
 # Init files
 PRODUCT_COPY_FILES += \
