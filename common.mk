@@ -64,9 +64,13 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     com.android.future.usb.accessory \
     libaudioutils \
-    libtinyalsa \
-    SamsungServiceMode \
-    Torch
+    libtinyalsa
+#    SamsungServiceMode
+
+# Root
+PRODUCT_PACKAGES += \
+    Superuser \
+    su
     
 # HAL
 PRODUCT_PACKAGES += \
