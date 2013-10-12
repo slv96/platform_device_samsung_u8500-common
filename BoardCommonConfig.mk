@@ -90,7 +90,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/u8500-common/overlay/include
 
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/devices/virtual/power_supply/battery/lpm_mode
-BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_RES := device/samsung/u8500-common/res/charger
 
 
