@@ -60,6 +60,7 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # Packages
 PRODUCT_PACKAGES += \
+    Apollo \
     audio.a2dp.default \
     audio.usb.default \
     com.android.future.usb.accessory \
