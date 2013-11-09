@@ -21,7 +21,8 @@
      for different hardware and product builds. -->
 <resources>
 
-    <!-- Disabled to activate electron beam animation (CRT-OFF) -->
+    <!-- If this is true, the screen will fade off. 
+         TODO: Disable this again, we just enable it to skip the actually semi-broken CRT-Animation--> 
     <bool name="config_animateScreenLights">false</bool>
 
     <integer name="config_deskDockKeepsScreenOn">0</integer>
@@ -91,9 +92,8 @@
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
          should be empty. -->
-		 
-	<!-- Experimental / Bluetooth tethering -->
-    <string-array translatable="false" name="config_tether_bluetooth_regexs">
+    <!-- BT tethering -->
+  <string-array translatable="false" name="config_tether_bluetooth_regexs">
         <item>"bnep0"</item>
     </string-array>
 
@@ -110,9 +110,6 @@
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
-
-    <!-- Boolean indicating whether the wifi chipset has p2p support
-    <bool translatable="false" name="config_wifi_p2p_support">true</bool> -->
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
@@ -173,8 +170,8 @@
     <!-- Allow the menu hard key to be disabled in LockScreen on some devices -->
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
 
-    <!-- Workaround for devices with broken keyboards
-    <bool name="config_forceDisableHardwareKeyboard">true</bool> -->
+    <!-- Workaround for devices with broken keyboards -->
+    <bool name="config_forceDisableHardwareKeyboard">true</bool>
 
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
@@ -184,52 +181,7 @@
 	
     <!-- LUN file to be used by legacy USB manager.
     The existence of this file will be used to determine in the
-    legacy USB manager should be started.
-    <string name="config_legacyUmsLunFile">/sys/devices/virtual/android_usb/android0/f_mass_storage/lun0/file</string> -->
-    
-    <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
-    Software implementation will be used if config_hardware_auto_brightness_available is not set -->
-    <bool name="config_automatic_brightness_available">true</bool>
-    
-     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
-     The N entries of this array define N + 1 zones as follows:
-
-     Zone 0:        0 <= LUX < array[0]
-     Zone 1:        array[0] <= LUX < array[1]
-     ...
-     Zone N:        array[N - 1] <= LUX < array[N]
-     Zone N + 1:    array[N] <= LUX < infinity
-
-     Must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLevels">
-        <item>7</item> <!-- (0 - 7) Very dark room -->
-        <item>75</item> <!-- (7 - 75) Poor light ambient -->
-        <item>1000</item> <!-- (75 - 1000) Indoor / shadows -->
-        <item>10000</item> <!--(1000 - 10000) Outdoor, (10000 - 16000 (max lux value)) Sunlight outdoor -->
-    </integer-array>
-    
-    <!-- Array of output values for LCD backlight corresponding to the LUX values
-    in the config_autoBrightnessLevels array.  This array should have size one greater
-    than the size of the config_autoBrightnessLevels array.
-    This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>20</item> <!-- (0 - 7) Very dark room -->
-        <item>30</item> <!-- (7 - 75) Poor light ambient -->
-        <item>110</item> <!-- (75 - 1000) Indoor / shadows -->
-        <item>175</item> <!-- (1000 - 10000) Outdoor-->
-        <item>255</item> <!-- (10000 - 16000) Sunlight outdoor -->
-    </integer-array>
-    
-    <!-- Array of output values for button backlight corresponding to the LUX values
-    in the config_autoBrightnessLevels array.  This array should have size one greater
-    than the size of the config_autoBrightnessLevels array.
-    This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>255</item> <!-- (0 - 7) Very dark room -->
-        <item>255</item> <!-- (7 - 75) Poor light ambient -->
-        <item>255</item> <!-- (75 - 1000) Indoor / shadows -->
-        <item>0</item> <!-- (1000 - 10000) Outdoor-->
-        <item>0</item> <!-- (10000 - 16000) Sunlight outdoor -->
-    </integer-array>
+    legacy USB manager should be started. -->
+    <string name="config_legacyUmsLunFile">/sys/devices/virtual/android_usb/android0/f_mass_storage/lun0/file</string>
     
 </resources>

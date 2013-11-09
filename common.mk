@@ -19,7 +19,10 @@ DEVICE_PACKAGE_OVERLAYS := $(COMMON_PATH)/overlay
 
 # Init files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc
+    $(COMMON_PATH)/rootdir/lpm.rc:root/lpm.rc
+
+# Get the long list of APNs
+PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 
 # STE
 PRODUCT_COPY_FILES += \
@@ -27,14 +30,16 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/omxloaders:system/etc/omxloaders \
     $(COMMON_PATH)/configs/usbid_init.sh:system/bin/usbid_init.sh
 
+# Make ROM Usable
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/07performance:system/etc/init.d/07performance
+
 # Audio
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/asound.conf:system/etc/asound.conf \
-    $(COMMON_PATH)/configs/Volume.db:system/etc/Volume.db
+    $(COMMON_PATH)/configs/asound.conf:system/etc/asound.conf
 
-# Vold and Storage
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/vold.fstab:system/etc/vold.fstab
+# Alsa
+$(call inherit-product, device/samsung/u8500-common/libasound/alsa-lib-products.mk)
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
@@ -42,7 +47,6 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
     $(COMMON_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -53,25 +57,19 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330
 
 # Gps
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/gps.conf:system/etc/gps.conf \
     $(COMMON_PATH)/configs/sirfgps.conf:system/etc/sirfgps.conf
-
-$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # Packages
 PRODUCT_PACKAGES += \
     Apollo \
+    Stk \
     audio.a2dp.default \
     audio.usb.default \
     com.android.future.usb.accessory \
     libaudioutils \
-    libtinyalsa
-#    SamsungServiceMode
-
-# Root
-PRODUCT_PACKAGES += \
-    Superuser \
-    su
+    libtinyalsa \
+    lights.montblanc
+#    SamsungServiceMode 
     
 # HAL
 PRODUCT_PACKAGES += \
@@ -82,9 +80,13 @@ PRODUCT_PACKAGES += \
     charger \
     charger_res_images
 
+# Root
+PRODUCT_PACKAGES += \
+    Superuser \
+    su
+
 # OMX
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/02omxsym:system/etc/init.d/02omxsym \
     $(COMMON_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(COMMON_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
@@ -115,6 +117,9 @@ PRODUCT_PACKAGES += \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -148,6 +153,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.kernel.android.checkjni=0 \
+    persist.sys.strictmode.disable=1 \
+    dalvik.vm.checkjni=false
+
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
@@ -157,6 +167,7 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 # Keylayout
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(COMMON_PATH)/usr/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl
 
 # Use the non-open-source parts, if they're present
 include vendor/samsung/u8500-common/vendor-common.mk
