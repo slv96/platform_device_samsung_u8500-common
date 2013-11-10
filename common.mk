@@ -42,8 +42,8 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, device/samsung/u8500-common/libasound/alsa-lib-products.mk)
 
 # Bluetooth configuration files
-PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
+#PRODUCT_COPY_FILES += \
+#    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
 
 # Wifi
 PRODUCT_COPY_FILES += \
