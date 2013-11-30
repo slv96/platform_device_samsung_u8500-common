@@ -188,9 +188,10 @@
 	
     <!-- LUN file to be used by legacy USB manager.
     The existence of this file will be used to determine in the
-    legacy USB manager should be started. -->
+    legacy USB manager should be started.
     <string name="config_legacyUmsLunFile">/sys/devices/virtual/android_usb/android0/f_mass_storage/lun0/file</string>
-    
+ -->    
+
     <!-- Control the behavior when the user double-taps the home button.
             0 - Nothing
             1 - Menu
