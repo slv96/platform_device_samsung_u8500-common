@@ -17,6 +17,10 @@ COMMON_PATH := device/samsung/u8500-common
 
 DEVICE_PACKAGE_OVERLAYS := $(COMMON_PATH)/overlay
 
+# Our devices are HDPI
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
+
 # Packages
 PRODUCT_PACKAGES += \
     Apollo \
