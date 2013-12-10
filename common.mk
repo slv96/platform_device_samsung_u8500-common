@@ -100,7 +100,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    audio.usb.default
+    audio.usb.default \
     libaudioutils \
     libtinyalsa
 
