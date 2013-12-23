@@ -197,6 +197,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.boot.selinux=disabled
     
+# LTE disabled
 PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnGsmDevice=0
 
