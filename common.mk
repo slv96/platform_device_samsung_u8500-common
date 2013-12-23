@@ -196,6 +196,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Disable SELinux
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.boot.selinux=disabled
+    
+PRODUCT_PROPERTY_OVERRIDES += \
+    telephony.lteOnGsmDevice=0
 
 # Precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
