@@ -17,6 +17,10 @@ COMMON_PATH := device/samsung/u8500-common
 
 DEVICE_PACKAGE_OVERLAYS := $(COMMON_PATH)/overlay
 
+# Our devices are HDPI
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
+
 # Packages
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
@@ -27,9 +31,7 @@ PRODUCT_PACKAGES += \
     libblt_hw \
     libomxil-bellagio \
     power.montblanc \
-    lights.montblanc \
-    SamsungServiceMode \
-    Torch
+    lights.montblanc
 
 # Init files
 PRODUCT_COPY_FILES += \
@@ -46,7 +48,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/asound.conf:system/etc/asound.conf
 	
 # Alsa
-$(call inherit-product, device/samsung/u8500-common/libasound/alsa-lib-products.mk)
+$(call inherit-product, device/samsung/u8500-common/opensource/libasound/alsa-lib-products.mk)
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
@@ -74,6 +76,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger \
     charger_res_images
+
+# Root
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/init.local.rc:root/init.local.rc \
+    external/koush/Superuser/init.superuser.rc:root/init.superuser.rc
+PRODUCT_PACKAGES += \
+      Superuser \
+      su
 
 # OMX
 PRODUCT_COPY_FILES += \
@@ -147,6 +157,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
+    
+# LTE disabled
+PRODUCT_PROPERTY_OVERRIDES += \
+    telephony.lteOnGsmDevice=0
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
