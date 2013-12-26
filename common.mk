@@ -49,7 +49,9 @@ PRODUCT_COPY_FILES += \
 
 # LPM charging
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/lpm.rc:root/lpm.rc
+    $(COMMON_PATH)/rootdir/lpm.rc:root/lpm.rc \
+    $(COMMON_PATH)/rootdir/init.local.rc:root/init.local.rc \
+    external/koush/Superuser/init.superuser.rc:root/init.superuser.rc
 
 # Graphics
 PRODUCT_PACKAGES += \
