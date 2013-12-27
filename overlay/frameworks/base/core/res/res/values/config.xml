@@ -29,9 +29,6 @@
 
     <!-- If this is true, the screen will fade off. --> 
     <bool name="config_animateScreenLights">false</bool>
-    
-    <!-- True will enable the electron beam screen-off animation. -->
-    <bool name="config_screenOffAnimation">true</bool>
 
     <integer name="config_deskDockKeepsScreenOn">0</integer>
     <integer name="config_carDockKeepsScreenOn">1</integer>
@@ -189,12 +186,6 @@
     legacy USB manager should be started. -->
     <string name="config_legacyUmsLunFile">/sys/devices/virtual/android_usb/android0/f_mass_storage/lun0/file</string>
 
-    <!-- Device supports LED flashlight -->
-    <bool name="config_enableTorch">true</bool>
-	
-	<!-- Disable the home key unlock setting -->
-    <bool name="config_disableHomeUnlockSetting">false</bool>
-
     <!-- Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
 
@@ -223,7 +214,7 @@
             16 - App switch
             32 - Camera
          For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareKeys">7</integer>
+         config to 7.
+    <integer name="config_deviceHardwareKeys">7</integer> -->
     
 </resources>
