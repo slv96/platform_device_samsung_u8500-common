@@ -130,16 +130,6 @@ PRODUCT_PACKAGES += \
     charger \
     charger_res_images
 
-# Root 1
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/init.local.rc:root/init.local.rc \
-    external/koush/Superuser/init.superuser.rc:root/init.superuser.rc
-    
-# Root 2
-PRODUCT_PACKAGES += \
-    Superuser \
-    su
-
 # OMX
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
