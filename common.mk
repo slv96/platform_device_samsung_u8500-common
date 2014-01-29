@@ -216,10 +216,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # LTE disabled
 PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnGsmDevice=0
-    
-# Disable Mobile Data at first boot
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.android.mobiledata=false
 
 # Precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
